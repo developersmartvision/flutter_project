@@ -11,7 +11,7 @@ class Radio extends StatelessWidget {
           children: [
             Text("Radio", style: TextStyle(fontSize: 30.0),),
             Padding(padding: EdgeInsets.all(10.0),),
-            Icon(Icons.radio, size: 90.0,)
+            Image.asset("img/radio.jpeg",width: 200.0,)
 
           ],
         ),

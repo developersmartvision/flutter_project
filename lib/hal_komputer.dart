@@ -11,7 +11,7 @@ class Komputer extends StatelessWidget {
           children: [
             Text("Komputer", style: TextStyle(fontSize: 30.0),),
             Padding(padding: EdgeInsets.all(10.0),),
-            Icon(Icons.computer, size: 90.0,)
+          Image.asset("img/komputer.jpeg",width: 200.0,)
 
           ],
         ),

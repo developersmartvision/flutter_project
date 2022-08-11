@@ -11,7 +11,7 @@ class Smartphone extends StatelessWidget {
           children: [
             Text("SmartPhone", style: TextStyle(fontSize: 30.0),),
             Padding(padding: EdgeInsets.all(10.0),),
-            Icon(Icons.smartphone, size: 90.0,)
+            Image(image: NetworkImage("https://images.bisnis-cdn.com/posts/2022/03/28/1515608/smartphone-terbaik-2021-redmi-note-10-pro-max.jpg"),width: 200.0,)
 
           ],
         ),
