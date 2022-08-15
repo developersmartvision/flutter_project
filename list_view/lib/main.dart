@@ -1,34 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:list_view/post_result_model.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: "Json Data Listview",
-    home: Home(data: List<String>.generate(300, (i) => "ini data ke $i"),),
-  ));
-}
+void main() => runApp(MyApp());
 
-class Home extends StatelessWidget {
-  final List<String> data;
-
-  Home({required this.data});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  PostResult? postResult = null;
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("List View"),
-      ),
-      body: Container(
-        child: ListView.builder(
-          itemCount: data.length,
-          itemBuilder: (context, index){
-            return ListTile(
-              leading: Icon (Icons.widgets),
-              title: Text("${data[index]}"),
-            );
-          },
+    return MaterialApp(
+      home: Scaffold (
+        appBar: AppBar(title: Text("Api Demo"),),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text((postResult != null) ? " id :"+postResult!.id +"\n nama : "+ postResult!.name +" \n job:${postResult!.job} \n tanggal: ${postResult!.created}": "tidak ada data"),
+              RaisedButton(
+                onPressed: (){
+                  PostResult.connectToApi("Badu", "Dockter").then((value) {
+                    postResult = value;
+                    setState(() { });
+                  });
+                },
+                child: Text("POST") ,
+              )
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }
