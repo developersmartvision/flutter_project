@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:list_view/post_result_model.dart';
+import 'package:list_view/user_model.dart';
 
 void main() => runApp(MyApp());
 
