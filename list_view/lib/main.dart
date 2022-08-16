@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  PostResult? postResult = null;
+ String output = "no data";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,13 +22,20 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text((postResult != null) ? " id :"+postResult!.id +"\n nama : "+ postResult!.name +" \n job:${postResult!.job} \n tanggal: ${postResult!.created}": "tidak ada data"),
+              Text(output),
               RaisedButton(
                 onPressed: (){
-                  PostResult.connectToApi("Badu", "Dockter").then((value) {
-                    postResult = value;
-                    setState(() { });
+                  User.getUsers("2").then((users) {
+                    output = "";
+                    for (int i = 0; i< users.length;i++){
+                      output = output+"["+users[i].name+"]";
+                    }
+                    setState(() {
+
+                    });
+
                   });
+
                 },
                 child: Text("POST") ,
               )
